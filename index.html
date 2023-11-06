@@ -1,33 +1,53 @@
- <!DOCTYPE html>
- <html lang="PT-BR">
- <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula 6</title>
-    <link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculadora Simples</title>
+</head>
+<body>
+  <h1>Calculadora Simples</h1>
+  <input type="text" id="display" readonly>
+  <table>
+    <tr>
+      <td><button onclick="appendToDisplay('7')">7</button></td>
+      <td><button onclick="appendToDisplay('8')">8</button></td>
+      <td><button onclick="appendToDisplay('9')">9</button></td>
+      <td><button onclick="appendToDisplay('+')">+</button></td>
+    </tr>
+    <tr>
+      <td><button onclick="appendToDisplay('4')">4</button></td>
+      <td><button onclick="appendToDisplay('5')">5</button></td>
+      <td><button onclick="appendToDisplay('6')">6</button></td>
+      <td><button onclick="appendToDisplay('-')">-</button></td>
+    </tr>
+    <tr>
+      <td><button onclick="appendToDisplay('1')">1</button></td>
+      <td><button onclick="appendToDisplay('2')">2</button></td>
+      <td><button onclick="appendToDisplay('3')">3</button></td>
+      <td><button onclick="appendToDisplay('*')">*</button></td>
+    </tr>
+    <tr>
+      <td><button onclick="appendToDisplay('0')">0</button></td>
+      <td><button onclick="clearDisplay()">C</button></td>
+      <td><button onclick="calculateResult()">=</button></td>
+      <td><button onclick="appendToDisplay('/')">/</button></td>
+    </tr>
+  </table>
+  <script>
+    function appendToDisplay(value) {
+      document.getElementById("display").value += value;
+    }
 
-   
- </head>
- <body>
-   
-   <strong><h1>Deixe um comentário</h1></strong>
-    <form action="Envio_Dados" method="get">
-        <label for="finput_name">Nome:</label><br>
-    <input type="text"  name="input_name"><br> 
-    <label for="finput_email">Email:</label><br>
-    <input type="text"  name="input_email"> <br> 
-    <label for="finput_website">Website:</label><br>
-    <input type="text" name="input_website"><br>
-    <label for="finput_comentário">Comentário:</label><br>
-   <textarea name="input_comentário" id="" cols="30" rows="10"></textarea> <br>
-   
-    <h4>Obeservação: Seu comentário será publicado após passar pelo moderador</h4>
-    <input type="submit"   name="submit"  value="Envie seu comentário">
-    
-    </form>
-   
-   
-    
- </body>
- </html>
+    function clearDisplay() {
+      document.getElementById("display").value = "";
+    }
+
+    function calculateResult() {
+      try {
+        document.getElementById("display").value = eval(document.getElementById("display").value);
+      } catch (error) {
+        document.getElementById("display").value = "Erro";
+      }
+    }
+  </script>
+</body>
+</html>
